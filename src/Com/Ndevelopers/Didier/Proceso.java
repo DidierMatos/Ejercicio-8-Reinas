@@ -12,14 +12,73 @@ import java.util.Arrays;
 
     public class Proceso {
 
-        String input[] = {"0-0","1-1","2-5","3-7","4-6","5-3","6-7","7-2","8-4"};
+        String input[] = new String[8 + 1];
         int tablero[][] = new int[8 + 1][8 + 1];
+        
+        String[] sin_parentesis = new String[8 + 1];
         
         String x,y;
         int num_x,num_y, tamano_tab = 8, atacante_x, atacante_y;
         private int contador_reinas = 0;
+        
+        int text_input;
+        String valor_ingresado;
+        String valor_ingresado_estatico = "[\"(1,1)\",\"(2,5)\",\"(3,8)\",\"(4,6)\",\"(5,3)\",\"(6,7)\",\"(7,2)\",\"(8,4)\"]";
+        Scanner input_coordenadas = new Scanner(System.in);
+        //["(1,1)","(2,5)","(3,8)","(4,6)","(5,3)","(6,7)","(7,2)","(8,4)"]
+        
+        String[] xy;
+        String[] xy2;
+        String x2,y2;
 
         public void Principal() { 
+            
+            System.out.print("\nProblema de las 8 Reinas. \nREGLAS: "
+                    + "\n1.- Recuerda como se imprime un arreglo, es de izquierda a derecha (te ayudara a ubicar correctamente)"
+                    + "\n2.- Mantener el formato como este : (2,1)\n");
+            
+            System.out.print("\nPorfavor ingresa 8 posiciones respetando el formato: ");
+            
+             //text_input = input_coordenadas.nextInt();
+              //valor_ingresado = Integer.toString(text_input);
+              //input[] = {valor_ingresado};
+             
+            valor_ingresado = input_coordenadas.next(); 
+            //System.out.println(valor_ingresado);
+            
+            String expSubString = valor_ingresado.substring(2,63);
+            //System.out.println(expSubString);
+
+            String[] parts = expSubString.split ("\",\"");
+            String part1 = parts[0];
+            System.out.println(part1);
+            
+            
+            
+            for(int i=0; i<parts.length;i++){
+                
+                sin_parentesis[i+1] = parts[i];
+                
+                String a = sin_parentesis[i+1].substring(1,4);
+                
+                String[] xy2 = a.split(",");
+                x2 = xy2[0];
+                y2 = xy2[1];
+                
+                //System.out.println(x2+y2);
+                //if(i != 0){
+                    input[i] = x2 + "-" + y2;
+                    System.out.println(input[i]);
+                //}
+                
+                
+                //System.out.println(parts[i].substring(1,4));
+                //parts2.add(parts[i].substring(1,4));
+            }
+
+            //for(int i=0; i<parts2.size();i++){
+                //System.out.println(parts2.get(i).toString());
+            //}
 
             Algoritmo(tablero);
 
@@ -32,13 +91,14 @@ import java.util.Arrays;
             int status = 1;                      
 
             for(int num = 1; num<input.length;num++){
-                String[] xy = input[num].split("-");
+                /*xy = input[num].split("-");
                 x = xy[0];
                 y = xy[1];
                 num_x = Integer.parseInt(x);
-                num_y = Integer.parseInt(y);
+                num_y = Integer.parseInt(y);*/
                 
                 //System.out.println(x + " " + y);
+                System.out.println(input[num].split("-"));
                 
                 
                 if ( tab[num_x][num_y] == 0 ) {   
