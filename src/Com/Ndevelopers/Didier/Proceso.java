@@ -31,61 +31,76 @@ import java.util.Arrays;
         String[] con_parentesis;
         String[] xy2;
         String x2,y2;
+        
+        Boolean reiniciar = true;
 
         public void Principal() { 
             
-            System.out.print("\nProblema de las 8 Reinas. \nREGLAS: "
-                    + "\n1.- Recuerda como se imprime un arreglo, es de izquierda a derecha (te ayudara a ubicar correctamente)"
-                    + "\n2.- Mantener el formato como este : [\"(1,1)\",\"(2,5)\",\"(3,8)\",\"(4,6)\",\"(5,3)\",\"(6,7)\",\"(7,2)\",\"(8,4)\"]\n");
+            while(reiniciar){
             
-            System.out.print("\nPorfavor ingresa 8 posiciones respetando el formato: ");
-            
-             //text_input = input_coordenadas.nextInt();
-              //valor_ingresado = Integer.toString(text_input);
-              //input[] = {valor_ingresado};
-             
-            valor_ingresado = input_coordenadas.next(); 
-            //System.out.println(valor_ingresado);
-            
-            String expSubString = valor_ingresado.substring(2,63);
-            //System.out.println(expSubString);
+                System.out.print("\n-------------------------Problema de las 8 Reinas.-------------------------------- \nREGLAS: "
+                        + "\n1.- Recuerda como se imprime un arreglo, es de izquierda a derecha (te ayudara a ubicar correctamente)"
+                        + "\n2.- Mantener el formato como este : [\"(1,1)\",\"(2,5)\",\"(3,8)\",\"(4,6)\",\"(5,3)\",\"(6,7)\",\"(7,2)\",\"(8,4)\"]\n");
 
-            con_parentesis = expSubString.split ("\",\"");
-            String part1 = con_parentesis[0];
-            //System.out.println(part1);
-            
-            
-            
-            /*for(int i=0; i<con_parentesis.length;i++){
-                
-                sin_parentesis[i+1] = con_parentesis[i];
-                
-                String a = sin_parentesis[i+1].substring(1,4);
-                
-                String[] xy = a.split(",");
-                x = xy[0];
-                y = xy[1];
-                
-                //System.out.println(x2+y2);
-                //if(i != 0){
-                    //input[i] = x + "-" + y;
-                    //System.out.println(input[i]);
-                //}
-                
-                
-                //System.out.println(parts[i].substring(1,4));
-                //parts2.add(parts[i].substring(1,4));
-            }*/
+                System.out.print("\nPorfavor ingresa 8 posiciones respetando el formato: ");
 
-            //for(int i=0; i<parts2.size();i++){
-                //System.out.println(parts2.get(i).toString());
-            //}
-            
-            System.out.print("\n");
+                 //text_input = input_coordenadas.nextInt();
+                  //valor_ingresado = Integer.toString(text_input);
+                  //input[] = {valor_ingresado};
 
-            Algoritmo(tablero);
+                valor_ingresado = input_coordenadas.next(); 
+                //System.out.println(valor_ingresado);
 
-            Imprime(tablero);
+                try {
+
+                    String expSubString = valor_ingresado.substring(2,63);
+
+
+                    //System.out.println(expSubString);
+
+                    con_parentesis = expSubString.split ("\",\"");
+                    String part1 = con_parentesis[0];
+                    //System.out.println(part1);
+
+
+
+                    /*for(int i=0; i<con_parentesis.length;i++){
+
+                        sin_parentesis[i+1] = con_parentesis[i];
+
+                        String a = sin_parentesis[i+1].substring(1,4);
+
+                        String[] xy = a.split(",");
+                        x = xy[0];
+                        y = xy[1];
+
+                        //System.out.println(x2+y2);
+                        //if(i != 0){
+                            //input[i] = x + "-" + y;
+                            //System.out.println(input[i]);
+                        //}
+
+
+                        //System.out.println(parts[i].substring(1,4));
+                        //parts2.add(parts[i].substring(1,4));
+                    }*/
+
+                    //for(int i=0; i<parts2.size();i++){
+                        //System.out.println(parts2.get(i).toString());
+                    //}
+
+                    System.out.print("\n");
+
+                    reiniciar = false;
+                    Algoritmo(tablero);
+                    Imprime(tablero);
+
+
+
+                }catch(Exception ex){
+                    System.out.println("      ¡¡PORFAVOR AGREGA UN FORMATO SIMILAR AL REGLAMENTO!!     ");
+                }
+            }
 
         }
     
