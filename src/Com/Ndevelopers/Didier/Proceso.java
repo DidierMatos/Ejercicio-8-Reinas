@@ -12,25 +12,25 @@ import java.util.Arrays;
 
     public class Proceso {
 
-        String input[] = new String[8 + 1];
-        int tablero[][] = new int[8 + 1][8 + 1];
+        String arr_input[] = new String[8 + 1];
+        int arr_tablero[][] = new int[8 + 1][8 + 1];
         
-        String[] sin_parentesis = new String[8 + 1];
+        String[] arr_con_parentesis;
+        String[] arr_sin_parentesis = new String[8 + 1];
         
+        String[] xy;
         String x,y;
+        //String[] xy2;
+        //String x2,y2;
+        
         int num_x,num_y, tamano_tab = 8, atacante_x, atacante_y;
         private int contador_reinas = 0;
         
         int text_input;
         String valor_ingresado;
-        String valor_ingresado_estatico = "[\"(1,1)\",\"(2,5)\",\"(3,8)\",\"(4,6)\",\"(5,3)\",\"(6,7)\",\"(7,2)\",\"(8,4)\"]";
+        //String valor_ingresado_estatico = "[\"(1,1)\",\"(2,5)\",\"(3,8)\",\"(4,6)\",\"(5,3)\",\"(6,7)\",\"(7,2)\",\"(8,4)\"]";
         Scanner input_coordenadas = new Scanner(System.in);
         //["(1,1)","(2,5)","(3,8)","(4,6)","(5,3)","(6,7)","(7,2)","(8,4)"]
-        
-        //String[] xy;
-        String[] con_parentesis;
-        String[] xy2;
-        String x2,y2;
         
         Boolean reiniciar = true;
 
@@ -58,8 +58,8 @@ import java.util.Arrays;
 
                     //System.out.println(expSubString);
 
-                    con_parentesis = expSubString.split ("\",\"");
-                    String part1 = con_parentesis[0];
+                    arr_con_parentesis = expSubString.split ("\",\"");
+                    String part1 = arr_con_parentesis[0];
                     //System.out.println(part1);
 
 
@@ -92,8 +92,12 @@ import java.util.Arrays;
                     System.out.print("\n");
 
                     reiniciar = false;
-                    Algoritmo(tablero);
-                    Imprime(tablero);
+                    Algoritmo(arr_tablero);
+                    Imprime(arr_tablero);
+                    
+                    if(contador_reinas == 8){
+                     System.out.println("------------------¡FELICIDADES GANASTE!------------------");
+                    }
 
 
 
@@ -108,11 +112,11 @@ import java.util.Arrays;
             
             int status = 1;                      
 
-            for(int num=0; num<con_parentesis.length;num++){
+            for(int num=0; num<arr_con_parentesis.length;num++){
                 
-                sin_parentesis[num+1] = con_parentesis[num];
+                arr_sin_parentesis[num+1] = arr_con_parentesis[num];
                 
-                String a = sin_parentesis[num+1].substring(1,4);
+                String a = arr_sin_parentesis[num+1].substring(1,4);
                 
                 String[] xy = a.split(",");
                 x = xy[0];
@@ -157,7 +161,7 @@ import java.util.Arrays;
                     break;
                 }else{
                     //System.out.println("No fallastes");
-                    tablero[num_x][num_y] = ++contador_reinas; //registra el numero de reina en la posicion
+                    arr_tablero[num_x][num_y] = ++contador_reinas; //registra el numero de reina en la posicion
               }
                 
                 
