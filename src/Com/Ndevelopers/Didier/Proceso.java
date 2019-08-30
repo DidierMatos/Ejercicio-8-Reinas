@@ -12,11 +12,11 @@ import java.util.Arrays;
 
     public class Proceso {
 
-        String input[] = {"0-0","1-1","1-2","3-8","4-6","5-3","6-7","7-2","8-4"};
+        String input[] = {"0-0","1-1","2-5","3-7","4-6","5-3","6-7","7-2","8-4"};
         int tablero[][] = new int[8 + 1][8 + 1];
         
         String x,y;
-        int num_x,num_y, tamano_tab = 8;
+        int num_x,num_y, tamano_tab = 8, atacante_x, atacante_y;
         private int contador_reinas = 0;
 
         public void Principal() { 
@@ -50,11 +50,15 @@ import java.util.Arrays;
                             // Evalua si la reina ataca en misma columna o fila
                                 if ((( num_x == i) || (num_y == j ))  || (Math.abs(num_x - i) == Math.abs(num_y - j )) ) {
 
-                                status = 0;
-                                break;
+                                    status = 2;
+                                    atacante_x = i;
+                                    atacante_y = j;
+                                    break;
                                 }
+                                
                             }
-                        } 
+                        }
+                        
                     }
 
                 } else{
@@ -66,7 +70,11 @@ import java.util.Arrays;
                 }
                 
                 if ( status == 0){
-                    System.out.println("Fallaste con los numeros" + num_x + "  " + num_y);
+                    System.out.println("Fallaste con los numeros: " + num_x + "  " + num_y);
+                }else if (status == 2){
+                    System.out.println("La Reina en la posicion: " + "(" + atacante_x + "," + atacante_y + ")" + " Te ha derrotado, intenta cambiar la ubicacion: " + "("  + num_x + "," + num_y + ")");
+                    System.out.println("\n");
+                    break;
                 }else{
                     //System.out.println("No fallastes");
                     tablero[num_x][num_y] = ++contador_reinas; //registra el numero de reina en la posicion
